@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>해야할게 너무 많아</title>
+    <link rel="stylesheet" th:href="@{styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>해야할게 너무 많아</h1>
+
+    <form th:action="@{/todos}" method="post">
+        <input type="text" name="task" placeholder="Enter a new task" required />
+        <button type="submit">Add toDo</button>
+    </form>
+
+    <div class="todo-list">
+        <ul>
+            <li th:each="task : ${todos}">
+                <div class="todo-item-left">
+                    <form th:action="@{/todos/toggle}" method="post" style="margin: 0;">
+                        <input type="hidden" name="taskId" th:value="${task.id}" />
+                        <input type="checkbox" onclick="this.form.submit()" th:checked="${task.completed}" />
+                    </form>
+
+                    <span th:text="${task.description}"></span>
+                </div>
+
+                <form th:action="@{/todos/update}" method="post" style="margin: 0; display: flex; align-items: center;">
+                    <input type="hidden" name="taskId" th:value="${task.id}" />
+                    <input type="text" name="newDescription" placeholder="Edit task" required />
+                    <button type="submit">Update</button>
+                </form>
+
+                <form th:action="@{/todos/delete}" method="post" style="margin: 0; display: flex; align-items: center;">
+                    <input type="hidden" name="taskId" th:value="${task.id}" />
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>

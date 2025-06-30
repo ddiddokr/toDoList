@@ -1,0 +1,160 @@
+/* 전체 레이아웃 및 배경 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffbe6; /* 연노란 배경 */
+}
+
+/* 가운데 카드 형태의 컨테이너 */
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    background-color: #ffffff;
+    padding: 30px 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    border: 2px solid #ffe58f;
+}
+
+/* 제목 */
+h1 {
+    text-align: center;
+    color: #d48806;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+/* 입력 폼 */
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 2px solid #ffe58f;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: #faad14;
+    box-shadow: 0 0 5px #ffd666;
+}
+
+/* 기본 버튼 스타일 */
+button {
+    padding: 10px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    height: 40px;                /* 높이 고정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 추가 버튼 - 초록색 */
+form[action="/todos"] button {
+    background-color: #52c41a;
+}
+
+form[action="/todos"] button:hover {
+    background-color: #389e0d;
+}
+
+/* 업데이트 버튼 - 파란색 */
+form[action*="update"] button {
+    background-color: #1890ff;
+}
+
+form[action*="update"] button:hover {
+    background-color: #096dd9;
+}
+
+/* 삭제 버튼 - 빨간색 */
+form[action*="delete"] button {
+    background-color: #ff4d4f;
+}
+
+form[action*="delete"] button:hover {
+    background-color: #cf1322;
+}
+
+/* 할 일 리스트 */
+.todo-list ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* 할 일 리스트 항목 */
+.todo-list li {
+    background-color: #fff1b8;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border: 2px solid #ffe58f;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #333;
+    flex-wrap: nowrap; /* 줄바꿈 방지 */
+    justify-content: flex-start; /* 왼쪽부터 정렬 */
+}
+
+/* 왼쪽 영역 (체크박스 + 할 일 내용) */
+.todo-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+/* 체크박스 크기 */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* 완료된 할 일 텍스트 처리 */
+input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* 텍스트 span 스타일 */
+.todo-item-left span {
+    flex: 1;
+    padding: 6px 0;               /* 위아래 패딩 줄임 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    position: relative;
+    top: -1px;                    /* 글씨를 살짝 위로 올림 */
+    display: inline-block;
+}
+
+/* 수정 입력창 */
+form[action*="update"] input[type="text"] {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-right: 6px;
+    height: 38px;                 /* 높이 고정 */
+}
